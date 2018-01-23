@@ -23,25 +23,33 @@ def choose_md_files(files_list):
 
 
 def define_charset(path):
-    with open(path,'rb') as md_file_obj:
-        charset = chardet.detect(md_file_obj.read()).get('encoding')
-        print(charset)
+    with open(path,'rb') as md_obj:
+        charset = chardet.detect(md_obj.read()).get('encoding')
         return charset
 
 
 def read_md(filepath, charset):
-    with open(filepath, 'r', encoding = charset) as md_file_obj:
-        return md_file_obj.read()
+    with open(filepath, 'r', encoding = charset) as md_obj:
+        return md_obj.read()
 
 
-def convert_md_to_html(md_file_obj):
-    html = markdown.markdown(md_file_obj)
+def convert_md_to_html(md_obj):
+    extensions = ['codehilite', 'extra', 'smarty']
+    html = markdown.markdown(md_obj, extensions=extensions, output_format='html5')
     return html
 
 
 def read_json(path):
-    with open(path, 'r') as json_file_obj:
-        return json.load(json_file_obj)
+    with open(path, 'r') as json_obj:
+        return json.load(json_obj)
+
+
+def get_config(json):
+    articles = json['articles']
+    source = articles['source']
+    title = articles['title']
+    topic = articles['topic']
+    
 
 
 
