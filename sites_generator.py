@@ -25,14 +25,13 @@ def get_configs_from_file(config_json):
         configs.append(article_config)
     return configs
 
-print(get_configs_from_file(load_config_file(CONFIG_FILEPATH)))
+#print(get_configs_from_file(load_config_file(CONFIG_FILEPATH)))
 
 def define_md_file_charset(path):
     with open(path,'rb') as md_obj:
-        charset = chardet.detect(md_obj.read()).get('encoding')
-        return charset
+        return chardet.detect(md_obj.read()).get('encoding')
 
-
+    
 def read_md(filepath, charset):
     with open(filepath, 'r', encoding = charset) as md_obj:
         return md_obj.read()
@@ -42,6 +41,13 @@ def convert_md_to_html(md_obj):
     extensions = ['codehilite', 'extra', 'smarty']
     html = markdown.markdown(md_obj, extensions=extensions, output_format='html5')
     return html
+
+
+def render_page(data):
+    loader=FileSystemLoader('./templates', encoding='utf-8', followlinks=False)
+    env = Environment(loader) 
+    template = env.get_template('templates/{}.html'.format())
+    return template.render()
 
 
 def create_site_structure(current_article_config_dict):
