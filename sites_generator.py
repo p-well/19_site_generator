@@ -1,28 +1,33 @@
-import os
 import json
-from os.path import basename, join, splitext
 import chardet
 import markdown
+from os import mkdir
+from os.path import exists, join, splitext
+from jinja2 import Environment, FileSystemLoader
 
 
-def get_files_list(path):
-    files_list = []
-    for dirpath, subdirs, files in os.walk(path):
-        for file in files:
-            filepath = os.path.join(dirpath, file)
-            files_list.append((dirpath, file))
-    return files_list
+CONFIG_FILEPATH = '.\config.json'
 
 
-def choose_md_files(files_list):
-    md_files_list = []
-    for dirpath, file in files_list:
-        if file.endswith('md'):
-            md_files_list.append(join(dirpath, file))
-    return md_files_list
+def load_config_file(path):
+    with open(path, 'r', encoding='utf-8') as json_obj:
+        return json.load(json_obj)
 
 
-def define_charset(path):
+def get_configs_from_file(config_json):
+    configs = list()
+    for article in config_json.get('articles'):
+        article_config = dict()
+        article_config['title'] = article.get('title')
+        article_config['source'] = article.get('source')
+        article_config['dir'] = article_config['source'].split('/')[0]
+        article_config['filename'] = article_config['source'].split('/')[1]
+        configs.append(article_config)
+    return configs
+
+print(get_configs_from_file(load_config_file(CONFIG_FILEPATH)))
+
+def define_md_file_charset(path):
     with open(path,'rb') as md_obj:
         charset = chardet.detect(md_obj.read()).get('encoding')
         return charset
@@ -39,25 +44,24 @@ def convert_md_to_html(md_obj):
     return html
 
 
-def read_json(path):
-    with open(path, 'r') as json_obj:
-        return json.load(json_obj)
+def create_site_structure(current_article_config_dict):
+    if not exists('site'):
+        mkdir('site')
+    dirpath = current_article_config_dict['dir']
+    if not exists(('site/{}').format(dirpath)):
+        mkdir('site/{}'.format(dirpath))
 
 
-def get_config(json):
-    articles = json['articles']
-    source = articles['source']
-    title = articles['title']
-    topic = articles['topic']
+def save_converted_html(dirpath, html_obj):
     
 
 
+if __name__ == '__main__':
+    configs = get_configs_from_file(load_config_file(CONFIG_FILEPATH))
+    for article_configs in configs:
+        article_filepath = 'articles/{}'.format(article_configs.get('source'))
+        charset = define_md_file_charset(article_filepath)
+        markdown_obj = read_md(article_filepath, charset)
+        html_obj = convert_md_to_html(markdown_obj)
+        create_site_structure(article_configs)
 
-
-files = get_files_list('C:\projects\devman')
-md_files = choose_md_files(files)
-print(md_files)
-for file in md_files:
-    print(file)
-    charset = define_charset(file)
-    print(convert_md_to_html(read_md(file, charset)))
