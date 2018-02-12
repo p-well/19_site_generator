@@ -1,29 +1,48 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<title>Стайлгайд</title>
-		<meta charset="utf-8">
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js">
-		</script>
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js">
-		</script>
-	</head>
-	<body>
-		<div class="panel panel-default" style="background: #faf9f9">
-			<div class="container">
-				<div class="panel-body">
-					<a href="../../index.html">
-						<img src="https://devman.org/assets/images/devman.png">
-					</a>
-					<p class="pull-right panel-title"><a href="https://devman.org/encyclopedia/">Энциклопедия</a><p>
-				</div>
-			</div>
-		</div>
-		<div class="container">
-			<div class="col-md-8 col-md-offset-2">
-				<h1>Стайлгайд</h1>
-					<p>PEP8 – это стайлгайд написания кода на Питоне. Он является <em>частью</em> Питона. Его все соблюдают.</p>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../../../favicon.ico">
+    <title>Стайлгайд</title>
+    <!-- Bootstrap core CSS -->
+    <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="http://getbootstrap.com/docs/4.0/examples/sticky-footer-navbar/sticky-footer-navbar.css" rel="stylesheet">
+  </head>
+  <body>
+      <!-- Fixed navbar -->
+      <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+      <a class="navbar-brand" href="https://devman.org/challenges/">Devman</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="https://devman.org/skills/">Учебная программа</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="https://devman.org/encyclopedia/">Энциклопедия</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="https://devman.org/qna/">Вопросы и Ответы</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="https://devmanorg.slack.com/">Слэк-чат</a>
+          </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+          <a class="btn btn-outline-success my-2 my-sm-0" href="https://devman.org/challenges/" role="button">Войти</a>
+        </form>
+      </div>
+    </nav>
+    <!-- Begin page content -->
+    <main role="main" class="container">
+      <h1 class="mt-5">Стайлгайд</h1>
+      <p class="lead"><p>PEP8 – это стайлгайд написания кода на Питоне. Он является <em>частью</em> Питона. Его все соблюдают.</p>
 <p>Он отвечает на вопросы в таком духе,</p>
 <ul>
 <li>Табы или пробелы?</li>
@@ -42,21 +61,23 @@
 по-дилетантски.</p>
 <p>Помимо PEP 8 есть ещё <code>pep8</code>. <code>pep8</code> – это модуль, позволяющий проверять, соответствует ли код стандарту PEP 8.
 Сперва её надо установить (<code>pip install pep8</code>), поле этого запустить, указав путь до файла или папки с кодом:
-<code>pep8 ./2_wallie_how_are_you/wallie.py</code>. Программа выдаст все нарушения PEP 8. Остаётся их только поправить.</p>
-			</div>
-			<div>
-				<span class="label label-default">python_basics</span>
-			</div>
-		</div>
-		<div style="height: 60px;">
-		</div>
-		<nav class="navbar navbar-default navbar-fixed-bottom">
-			<div class="container">
-				<div class="col-sm-12 text-center navbar-text">
-					conformist © <a href="https://github.com/conformist-mw">github</a>
-					— <a href="https://vk.com/devmanorg">vk.com/devmanorg</a>
-				</div>
-			</div>
-		</nav>
-	</body>
+<code>pep8 ./2_wallie_how_are_you/wallie.py</code>. Программа выдаст все нарушения PEP 8. Остаётся их только поправить.</p></p>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <span class="text-muted">
+          <a href="https://github.com/p-well/">Pavel Kadantsev</a> on behalf of &copy; <a href="https://devman.org/">devman.org</a> 2018
+        </span>
+      </div>
+    </footer>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="../../../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+    <script src="../../../../assets/js/vendor/popper.min.js"></script>
+    <script src="../../../../dist/js/bootstrap.min.js"></script>
+  </body>
 </html>
