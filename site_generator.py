@@ -53,6 +53,7 @@ def make_site():
 if __name__ == '__main__':
     make_site()
     server = Server()
-    server.watch(ARTICLE_TEMPLATE, make_site)
-    server.watch(INDEX_TEMPLATE, make_site)
+    server.watch('templates/article_template.html', make_site)
+    server.watch('templates/index_template.html', make_site)
+    server.watch('articles/*/*.md', make_site)
     server.serve(root='site/')
