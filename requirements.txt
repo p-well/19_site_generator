@@ -1,0 +1,8 @@
+chardet==3.0.4
+Jinja2==2.10
+livereload==2.5.1
+Markdown==2.6.11
+MarkupSafe==1.0
+pep8==1.7.1
+six==1.11.0
+tornado==4.5.3
