@@ -2,7 +2,10 @@ import json
 import chardet
 import markdown
 from os import makedirs
-from os.path import basename, exists, join, splitext
+from os.path import basename, dirname, exists, join, splitext
+
+
+CYCLOPEADIA_DIRPATH = 'site/articles'
 
 
 def load_config_file(path):
@@ -30,11 +33,21 @@ def convert_md_to_html(md_obj):
     return html_obj
 
 
-def change_ext_from_md_to_html(path):
-    article_name, extention = splitext(basename(path))
+def change_ext_from_md_to_html(article_info):
+    source = article_info['source']
+    article_name, extention = splitext(basename(source))
     new_extention = 'html'
     savename = '{}.{}'.format(article_name, new_extention)
     return savename
+
+
+def create_article_url(article_info):
+    source = article_info['source']
+    directory = dirname(source)
+    html_name = change_ext_from_md_to_html(article_info)
+    url = join(CYCLOPEADIA_DIRPATH, directory, html_name)
+    print(url)
+    return url
 
 
 def constract_dir_tree(configs, site_basepath):
