@@ -46,7 +46,6 @@ def create_article_url(article_info):
     directory = dirname(source)
     html_name = change_ext_from_md_to_html(article_info)
     url = join(CYCLOPEADIA_DIRPATH, directory, html_name)
-    print(url)
     return url
 
 
