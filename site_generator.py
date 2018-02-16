@@ -12,42 +12,42 @@ ARTICLE_TEMPLATE = 'article_template.html'
 INDEX_TEMPLATE = 'index_template.html'
 
 
-def render_index(env, configs):
+def render_index(env, config):
     index_content = defaultdict(list)
-    for article in configs['articles']:
-        path = join('articles', article['source'].replace('md', 'html'))
-        index_content[article['topic']].append([article['title'], path])
+    for article in config['articles']:
+        url = files_handler.create_article_url(article)
+        index_content[article['topic']].append([article['title'], url])
     rendered_index = env.get_template(INDEX_TEMPLATE).render(
             content=index_content
         )
     files_handler.write_html_file(INDEX_PATH, rendered_index)
 
 
-def render_articles(env, configs):
-    for config in configs['articles']:
-        article_filepath = r'articles/{}'.format(config['source'])
-        charset = files_handler.define_md_file_charset(article_filepath)
-        markdown_obj = files_handler.read_md(article_filepath, charset)
+def render_articles(env, config):
+    for article in config['articles']:
+        md_filepath = r'articles/{}'.format(article['source'])
+        charset = files_handler.define_md_file_charset(md_filepath)
+        markdown_obj = files_handler.read_md(md_filepath, charset)
         html_obj = files_handler.convert_md_to_html(markdown_obj)
-        savename = files_handler.change_ext_from_md_to_html(config['source'])
-        savedir = config['source'].split('/')[0]
+        savename = files_handler.change_ext_from_md_to_html(article)
+        savedir = article['source'].split('/')[0]
         savepath = join(CYCLOPEADIA_DIRPATH, savedir, savename)
         context = {
             'html': html_obj,
-            'title': config['title'],
-            'topic': config['topic']
+            'title': article['title'],
+            'topic': article['topic']
         }
         rendered_article = env.get_template(ARTICLE_TEMPLATE).render(context)
         files_handler.write_html_file(savepath, rendered_article)
 
 
 def make_site():
-    configs = files_handler.load_config_file(CONFIG_PATH)
-    files_handler.constract_dir_tree(configs, CYCLOPEADIA_DIRPATH)
+    config = files_handler.load_config_file(CONFIG_PATH)
+    files_handler.constract_dir_tree(config, CYCLOPEADIA_DIRPATH)
     loader = FileSystemLoader('templates', followlinks=True)
     env = Environment(loader=loader)
-    render_index(env, configs)
-    render_articles(env, configs)
+    render_index(env, config)
+    render_articles(env, config)
 
 
 if __name__ == '__main__':
