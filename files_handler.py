@@ -2,7 +2,7 @@ import json
 import chardet
 import markdown
 from os import makedirs
-from os.path import exists, join
+from os.path import basename, exists, join, splitext
 
 
 def load_config_file(path):
@@ -31,7 +31,9 @@ def convert_md_to_html(md_obj):
 
 
 def change_ext_from_md_to_html(path):
-    savename = path.split('/')[1].replace('md', 'html')
+    article_name, extention = splitext(basename(path))
+    new_extention = 'html'
+    savename = '{}.{}'.format(article_name, new_extention)
     return savename
 
 
