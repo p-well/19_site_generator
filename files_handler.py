@@ -5,9 +5,6 @@ from os import makedirs
 from os.path import basename, dirname, exists, join, splitext
 
 
-CYCLOPEADIA_DIRPATH = 'site/articles'
-
-
 def load_config_file(path):
     with open(path, 'r', encoding='utf-8') as json_obj:
         return json.load(json_obj)
@@ -45,7 +42,7 @@ def create_article_url(article_info):
     source = article_info['source']
     directory = dirname(source)
     html_name = change_ext_from_md_to_html(article_info)
-    url = join(CYCLOPEADIA_DIRPATH, directory, html_name)
+    url = join('articles', directory, html_name)
     return url
 
 
