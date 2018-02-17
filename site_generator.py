@@ -1,5 +1,5 @@
 from os.path import join
-from collections import defaultdict
+from collections import defaultdict, OrderedDict
 from jinja2 import Environment, FileSystemLoader
 from livereload import Server
 
@@ -13,13 +13,24 @@ INDEX_TEMPLATE = 'index_template.html'
 
 
 def render_index(env, config):
-    index_content = defaultdict(list)
+    unordered_content = defaultdict(list)
     for article in config['articles']:
         url = files_handler.create_article_url(article)
-        index_content[article['topic']].append([article['title'], url])
+        unordered_content[article['topic']].append([article['title'], url])
+    slugs_english, titles_russian = [], []
+    for topic in config['topics']:
+        slugs_english.append(topic['slug'])
+        titles_russian.append(topic['title'])
+    content_to_order = [
+        (key, unordered_content.get(key)) for key in slugs_english
+    ]
+    ordered_content = OrderedDict(content_to_order)
+    ordered_content_russian_titles = OrderedDict(
+        zip(titles_russian, ordered_content.values())
+    )
     rendered_index = env.get_template(INDEX_TEMPLATE).render(
-            content=index_content
-        )
+            content=ordered_content_russian_titles
+    )
     files_handler.write_html_file(INDEX_PATH, rendered_index)
 
 
