@@ -3,6 +3,7 @@ import chardet
 import markdown
 from os import makedirs
 from os.path import basename, dirname, exists, join, splitext
+from jinja2 import Markup
 
 
 def load_config_file(path):
@@ -22,11 +23,11 @@ def read_md(filepath, charset):
 
 def convert_md_to_html(md_obj):
     extensions = ['codehilite', 'extra', 'smarty']
-    html_obj = markdown.markdown(
+    html_obj = Markup(markdown.markdown(
         md_obj,
         extensions=extensions,
         output_format='html5'
-    )
+    ))
     return html_obj
 
 
