@@ -61,7 +61,11 @@
             <h4> {{theme}} </h4>
               <ul>
                 {% for article in articles_in_theme %}
-                <li> <a href="{{ article[1] }}"> {{article[0]}} </a></li>
+                <li>
+                {% autoescape true %} 
+                <a href="{{ article[1]|e}}"> {{ article[0]|e}} </a>
+                {% endautoescape %}
+                </li>
                 {% endfor %}
               </ul>
           </div>
