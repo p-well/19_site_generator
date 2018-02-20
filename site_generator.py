@@ -55,8 +55,12 @@ def render_articles(env, config):
 def make_site():
     config = files_handler.load_config_file(CONFIG_PATH)
     files_handler.constract_dir_tree(config, CYCLOPEADIA_DIRPATH)
-    loader = FileSystemLoader('templates', followlinks=True)
-    env = Environment(loader=loader)
+    loader = FileSystemLoader('templates', encoding='utf-8', followlinks=True)
+    env = Environment(
+        loader=loader,
+        autoescape=True,
+        trim_blocks=False
+    )
     render_index(env, config)
     render_articles(env, config)
 
