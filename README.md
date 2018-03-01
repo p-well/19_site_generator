@@ -1,10 +1,8 @@
 # Encyclopedia
 
-This is encyclopedia for web-developers.
-Here you can find useful materials and a brief articles needed for successful performing tasks from [DEVMAN.org](https://devman.org) training course.
-The code contained herein (python script and HTML) is written as a part of Devman course.<br />
+This is encyclopedia for web-developers. Here you can find useful materials and a brief articles needed for successful performing <br />tasks from [DEVMAN.org](https://devman.org) training course. The code contained herein (python script and HTML) is written as a part of Devman course.<br />
 
-The purpose of the script is to build a simple static page site by filling HTML templates with appropriate content using [Jinja](http://jinja.pocoo.org/) <br />
+The purpose of the script is to build a simple static page site by filling HTML templates with appropriate content using [Jinja](http://jinja.pocoo.org/).. <br />
 HTML pages are based on [Bootstrap](https://getbootstrap.com) templates.
 
 
