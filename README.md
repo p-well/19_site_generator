@@ -1,13 +1,10 @@
 # Encyclopedia
 
-This encyclopedia for web-developers.
-
-Here you can find useful materials and a brief articles needed for successful performing tasks from [DEVMAN.org](https://devman.org) training course. <br />
-
-The code (python script and HTML) is written as a part of Devman course.<br />
+This is encyclopedia for web-developers.
+Here you can find useful materials and a brief articles needed for successful performing tasks from [DEVMAN.org](https://devman.org) training course.
+The code contained herein (python script and HTML) is written as a part of Devman course.<br />
 
 The purpose of the script is to build a simple static page site by filling HTML templates with appropriate content using [Jinja](http://jinja.pocoo.org/) <br />
-
 HTML pages are based on [Bootstrap](https://getbootstrap.com) templates.
 
 
@@ -24,7 +21,7 @@ Usage of virtual environment is recommended. Create it using ```python -m venv y
 
 # Usage
 
-To execute the script run the following command ```python site_generator.py``` in OS console/terminal.
+To execute the script run the command ```python site_generator.py``` in OS console/terminal.
 
 You will see the following:
 
@@ -68,12 +65,12 @@ The ```site``` folder content is like that:
 │       └── 22_git_history.html
 ```
 
-If needed you may write the new article in ```.md``` and update ```config.json``` file. <br />
+If needed you may write a new article in ```.md``` but also don't forget to update ```config.json``` file. <br />
 
 The script will convert your ```.md``` into ```.html``` and link to the new article will appear in the appropriate section on the Encyclopedia index page. <br />
 
 You don't need to rerun the scripts: [livereload](https://pypi.python.org/pypi/livereload/2.5.1) will take care of it. <br />
-It also watches for changes in present articles as well as index page and article page HTML templates. <br />
+It also watches for changes in present articles as well as index page and article page HTML templates and re-render page when any changes appear. <br />
 
 
 # Project Goals
