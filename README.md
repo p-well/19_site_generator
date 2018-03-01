@@ -28,9 +28,9 @@ You will see the following:
 
 <pre>
 <b>>python site_generator.py </b>
-[I 180301 22:38:42 server:283] Serving on http://127.0.0.1:5500
-[I 180301 22:38:42 handlers:60] Start watching changes
-[I 180301 22:38:42 handlers:62] Start detecting changes
+[I 180201 22:38:42 server:283] Serving on http://127.0.0.1:5500
+[I 180201 22:38:42 handlers:60] Start watching changes
+[I 180201 22:38:42 handlers:62] Start detecting changes
 </pre>
 
 Site is now available in your browser at ```http://127.0.0.1:5500```.
