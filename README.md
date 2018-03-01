@@ -7,7 +7,7 @@ The code contained herein (python script and HTML) is written as a part of Devma
 The purpose of the script is to build a simple static page site by filling HTML templates with appropriate content using [Jinja](http://jinja.pocoo.org/). <br />
 HTML pages are based on [Bootstrap](https://getbootstrap.com) templates.
 
-
+View site on [GitHub Pages](https://p-well.github.io/19_site_generator/).
 
 Pavel Kadantsev, 2018. <br/>
 p.a.kadantsev@gmail.com
