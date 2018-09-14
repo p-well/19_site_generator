@@ -1,3 +1,7 @@
+#TODO
+Need to fix bootstrap template - rendering has crashed
+
+
 # Encyclopedia
 
 This is encyclopedia for web-developers. Here you can find useful materials and a brief articles needed for successful performing tasks from [DEVMAN.org](https://devman.org) training course. <br />
